@@ -1,4 +1,4 @@
-// DrawTriangle.js (c) 2012 matsuda
+
 function main() {
   const canvas = document.getElementById("example");
   const ctx = canvas.getContext("2d");
