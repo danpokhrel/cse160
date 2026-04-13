@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Assignment1</title>
+    <script src="lib/cuon-matrix.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="shaders.js"></script>
+    <script src="shape.js"></script>
+    <script src="paint.js"></script>
+    <script src="asg1.js"></script>
+</head>
+
+<body onload="main()">
+    <label>Dan Pokhrel</label><br>
+    <label>dpokhrel@ucsc.edu</label><br>
+    <canvas id="canvas" onmousemove="_onMouseMove(event)" width="400" height="400"></canvas>
+    <img src="img.jpeg"><br>
+
+    <input type="button" onclick="clearShapes()" id="ClearCanvas" value="Clear Canvas"><br><br>
+
+    <label>Drawing Mode:</label><br>
+    <input type="button" onclick="dmTriangles()" id="triangles" value="Triangles">
+    <input type="button" onclick="dmSquares()" id="squares" value="Squares">
+    <input type="button" onclick="dmCircles()" id="circles" value="Circles"><br><br>
+
+    <label>Shape Color:</label><br>
+    <label>Red</label>
+    <input type="range" onmouseup="updateRed()" id="redSlider" min="0" max="255">
+    <label>Green</label>
+    <input type="range" onmouseup="updateGreen()" id="greenSlider" min="0" max="255">
+    <label>Blue</label>
+    <input type="range" onmouseup="updateBlue()" id="blueSlider" min="0" max="255"><br>
+
+    <label>Shape Size:</label>
+    <input type="range" onmouseup="updateSize()" id="sizeSlider" min="5" max="100">
+    <label>(Circles) Segment Count:</label>
+    <input type="range" onmouseup="updateSegments()" id="segmentSlider" min="5" max="20">
+</body>
+
+</html>
