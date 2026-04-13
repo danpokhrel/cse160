@@ -20,9 +20,7 @@ function main() {
     updateSize();
     updateSegments();
 
-    clearCanvas();
-    painting = new Painting(gl, colorUniform);
-    painting.draw();
+    paint();
 }
 
 function setupWebGL(){
@@ -53,6 +51,12 @@ function render() {
     for (let shape of shapes){
         shape.draw();
     }
+}
+
+function paint() {
+    clearCanvas();
+    let painting = new Painting(gl, colorUniform);
+    painting.draw();
 }
 
 function drawShape(){
