@@ -33,7 +33,10 @@ class Animation {
         for (const track of this.data.tracks) {
             const obj = track.obj;
             const frame = track.frames[this.curFrame];
-            obj.localTransform = frame;
+            obj.localTransform.set(frame);
         }
+
+        Neck.localTransform.rotate(this.rot1, 0, 1, 0);
+        Head.localTransform.rotate(this.rot2, 1, 0, 0);
     }
 }

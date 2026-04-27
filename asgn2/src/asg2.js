@@ -5,6 +5,7 @@ function main() {
     const scene = new Scene(renderer);
     generateScene(scene);
     const animation = new Animation(animWalk);
+    animation.isPlaying = true;
 
     let timeline = document.getElementById("Timeline");
     let playButton = document.getElementById("PlayPause");
@@ -15,6 +16,7 @@ function main() {
     updateRotation();
 
     let frameTimes = [];
+    let fpsList = [];
     let lastTime = performance.now();
     let frameLabel = document.getElementById("FrameTime");
 
@@ -30,12 +32,16 @@ function main() {
         scene.render();
 
         frameTimes.push(performance.now() - start);
-        //frameTimes.push(deltaTime);
+        fpsList.push(deltaTime);
         if (frameTimes.length > FPS_AVERAGE_STEP) {
             frameTimes.shift();
         }
+        if (fpsList.length > FPS_AVERAGE_STEP) {
+            fpsList.shift();
+        }
         const frameTime = average(frameTimes);
-        frameLabel.innerHTML = "ms: " + frameTime.toFixed(1) + " fps: " + (1000 / frameTime).toFixed(0);
+        const fps = 1000 / average(fpsList)
+        frameLabel.innerHTML = "ms: " + frameTime.toFixed(1) + " fps: " + fps.toFixed(0);
 
         requestAnimationFrame(tick);
     }
@@ -54,17 +60,13 @@ function main() {
         rotation = document.getElementById("Rotation").value;
     }
     document.getElementById("Neck").addEventListener("input", function () {
-        pause();
-        neckRot = document.getElementById("Neck").value;
-        setRot();
+        play();
+        animation.rot1 = document.getElementById("Neck").value;
     })
     document.getElementById("Head").addEventListener("input", function () {
-        pause();
-        headRot = document.getElementById("Head").value;
-        setRot();
+        play();
+        animation.rot2 = document.getElementById("Head").value;
     })
-    function setRot() {
-    }
 
     playButton.addEventListener("click", function () {
         if (animation.isPlaying) pause();
