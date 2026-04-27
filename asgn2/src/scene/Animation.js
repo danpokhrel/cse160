@@ -8,6 +8,9 @@ class Animation {
 
         this.curFrame = 0;
         this.frameDuration = 0;
+
+        this.rot1 = 0;
+        this.rot2 = 0;
     }
 
     tick(deltaTime) {

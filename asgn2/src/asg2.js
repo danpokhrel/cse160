@@ -29,8 +29,8 @@ function main() {
         animation.tick(deltaTime);
         scene.render();
 
-        //frameTimes.push(performance.now() - start);
-        frameTimes.push(deltaTime);
+        frameTimes.push(performance.now() - start);
+        //frameTimes.push(deltaTime);
         if (frameTimes.length > FPS_AVERAGE_STEP) {
             frameTimes.shift();
         }
@@ -56,11 +56,15 @@ function main() {
     document.getElementById("Neck").addEventListener("input", function () {
         pause();
         neckRot = document.getElementById("Neck").value;
+        setRot();
     })
     document.getElementById("Head").addEventListener("input", function () {
-        play();
+        pause();
         headRot = document.getElementById("Head").value;
+        setRot();
     })
+    function setRot() {
+    }
 
     playButton.addEventListener("click", function () {
         if (animation.isPlaying) pause();

@@ -3,8 +3,8 @@ class Camera {
         this.transform = new Matrix4();
         this.projectionMatrix = new Matrix4();
 
-        this.target = [0, 0, 0];
-        this.distance = Math.sqrt(3 * 3 + 3 * 3 + 7 * 7);
+        this.target = [0, 2, 0];
+        this.distance = 20;
         this.theta = Math.atan2(3, 7) * 180 / Math.PI;
         this.phi = Math.atan2(3, Math.sqrt(3 * 3 + 7 * 7)) * 180 / Math.PI;
         this.updateView();
